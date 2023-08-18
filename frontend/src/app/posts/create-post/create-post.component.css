@@ -1,0 +1,34 @@
+mat-card{
+    width: 60%;
+    margin:auto;
+    
+    /* border: 1px solid black;  */
+}
+#save-btn{
+    width: 10%;
+    margin-left: 12px;
+    margin-bottom: 7px;
+    padding: 10px 0 10px 0;
+    /* border: 1px solid black; */
+}
+
+#title{
+    
+    /* border: 1px solid black; */
+    margin:5px 0 5px 0;
+}
+
+#txtarea{
+    /* border: 1px solid black; */
+}
+
+form{
+    /* border: 1px solid black; */
+}
+
+mat-form-field{
+    width: 100%;
+}
+/* .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    --mdc-filled-text-field-container-color: blue
+} */

@@ -1,0 +1,15 @@
+<mat-card>
+    <form #myform="ngForm"   (submit)="onSave(myform)">
+    <mat-form-field>
+        <!-- <mat-label>Textarea</mat-label> -->
+        <p id="title">
+            <input matInput type="text"   name="title" ngModel>
+        </p>
+    </mat-form-field>
+    <mat-form-field>
+        <textarea matInput color="primary"  rows="0" name="description" ngModel #textarea></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit"  id="save-btn" >Save</button>
+</form>
+</mat-card>
+
