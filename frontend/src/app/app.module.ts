@@ -17,6 +17,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatExpansionModule,
     FormsModule,
     HttpClientModule,
- 
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

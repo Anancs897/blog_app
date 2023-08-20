@@ -1,13 +1,14 @@
-<mat-card>
+<mat-spinner *ngIf="Loading"></mat-spinner>
+<mat-card *ngIf="!Loading">
     <form #myform="ngForm"   (submit)="onSave(myform)">
     <mat-form-field>
         <!-- <mat-label>Textarea</mat-label> -->
         <p id="mytitle">
-            <input matInput type="text"   name="title" ngModel #title="ngModel">
+            <input matInput type="text"   name="title" [ngModel]="post?.title" #title="ngModel">
         </p>
     </mat-form-field>
     <mat-form-field>
-        <textarea matInput color="primary"  rows="0" name="description" ngModel #description="ngModel"></textarea>
+        <textarea matInput color="primary"  rows="0" name="content" [ngModel]="post?.content" #content="ngModel"></textarea>
     </mat-form-field>
     <button mat-raised-button color="primary" type="submit"  id="save-btn">Save</button>
 </form>
