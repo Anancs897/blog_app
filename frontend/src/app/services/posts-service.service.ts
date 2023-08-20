@@ -12,14 +12,17 @@ export class PostsServiceService {
 
 
 
-  private posts:Post[]=[];
+  public posts:Post[]=[];
 
   private postsUpdated=new Subject<Post[]>();
   getPosts(){
-    this.http.get<{id:string,message:string,posts:Post[]}>('http://localhost:3000/posts').subscribe((postData)=>{
+    this.http.get<{message:string,posts:Post[]}>('http://localhost:3000/posts').subscribe((postData)=>{
       this.posts=postData.posts
+      console.log(this.posts);
+      //console.log(this.postsUpdated);
     })
   }
+
 
   getPostUpdateListener(){
       return this.postsUpdated.asObservable();

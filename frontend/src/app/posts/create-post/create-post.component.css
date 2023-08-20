@@ -1,6 +1,7 @@
 mat-card{
     width: 60%;
     margin:auto;
+    margin-top: 20px;
     
     /* border: 1px solid black;  */
 }
@@ -9,22 +10,29 @@ mat-card{
     margin-left: 12px;
     margin-bottom: 7px;
     padding: 10px 0 10px 0;
-    /* border: 1px solid black; */
+    border: 1px solid black;
 }
 
-#title{
+#mytitle{
     
-    /* border: 1px solid black; */
+     /* border: 1px solid black;  */
     margin:5px 0 5px 0;
+    width: 100%;
 }
 
-#txtarea{
-    /* border: 1px solid black; */
+/* form{
+    border: 1px solid black;
+} */
+
+mat-form-field{
+    width: 100%;
 }
 
-form{
-    /* border: 1px solid black; */
-}
+
+
+/* form{
+     border: 1px solid black; 
+
 
 mat-form-field{
     width: 100%;
