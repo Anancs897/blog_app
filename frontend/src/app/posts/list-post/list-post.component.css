@@ -2,4 +2,20 @@
     margin: auto;
     margin-top: 30px; 
      width: 60%; } 
-    
+
+     /* .post-image{
+      border: 1px solid black;
+      width: 100%
+     }
+    .post-image image{
+      border: 1px solid blue;
+      overflow: hidden;
+      height: 200px;
+      width: 200px;
+    } */
+
+    #my-img{
+      width: 60%;
+      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5)
+      
+    }
