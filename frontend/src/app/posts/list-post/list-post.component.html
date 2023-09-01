@@ -1,4 +1,5 @@
-<p id="expand">
+<mat-spinner *ngIf="loading"></mat-spinner>
+<p id="expand" *ngIf="!loading">
     <mat-accordion *ngFor="let post of posts">
         <mat-expansion-panel>
 
@@ -9,16 +10,20 @@
             </mat-expansion-panel-header>
 
             <div class="post-image">
-                <img [src]="post.imagePath" [alt]="post.title" id="my-img" >
+                <img [src]="post.imagePath" [alt]="post.title" id="my-img">
             </div>
 
             {{post.content}}
 
-            <mat-action-row>
-                <a mat-button color="primary"  [routerLink]="['/edit',post.id]" >Edit</a>
-                <button mat-button color="warn" (click)="onDelete(post.id)" >Delete</button>
+            <mat-action-row *ngIf="userIsAuthenticated  && userId == post.creator">
+                <a mat-button color="primary" [routerLink]="['/edit',post.id]">Edit</a>
+                <button mat-button color="warn" (click)="onDelete(post.id)">Delete</button>
             </mat-action-row>
 
         </mat-expansion-panel>
     </mat-accordion>
 </p>
+
+<mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions"
+    (page)="onChangedPage($event)" aria-label="Select page">
+</mat-paginator>

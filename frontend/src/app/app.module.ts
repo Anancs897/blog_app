@@ -16,16 +16,22 @@ import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { AuthInterceptorInterceptor } from './auth/auth-interceptor.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     CreatePostComponent,
-    ListPostComponent
+    ListPostComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +46,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatPaginatorModule
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptorInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

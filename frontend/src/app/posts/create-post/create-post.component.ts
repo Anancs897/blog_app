@@ -24,7 +24,7 @@ export class CreatePostComponent implements OnInit {
   imagePreview:any
 
 
-  constructor(public postService:PostsServiceService, private route:ActivatedRoute ){}
+  constructor(public postService:PostsServiceService, public route:ActivatedRoute ){}
 
   ngOnInit(): void {
 
@@ -35,7 +35,7 @@ export class CreatePostComponent implements OnInit {
       content:new FormControl(null,{
         validators:[Validators.required]
       }),
-      image: new FormControl(null,{
+      imagePath: new FormControl(null,{
         validators:[Validators.required]
       })
     })
@@ -45,15 +45,36 @@ export class CreatePostComponent implements OnInit {
       {
         this.mode='edit';
         this.postId=paramMap.get('postId');
-        //  this.Loading=true; 
-        // this.postService.getPost(this.postId).subscribe
-        this.post=this.postService.getPost(this.postId)
-         //this.Loading=false;
-        this.form.setValue({
-          title:this.post.title,
-          content:this.post.content,
-          image:this.post.imagePath
+       //this.Loading=true;
+        // this.post=this.postService.getPost(this.postId)
+        // this.Loading=false
+        
+        this.postService.getPost(this.postId).subscribe(postData=>{
+          console.log(postData);
+          
+          //this.Loading=false
+          this.post={
+            id:postData._id,
+            title:postData.title,
+            content:postData.content,
+            imagePath:postData.imagePath,
+            creator:postData.creator
+          }
+          this.form.setValue({
+            title:this.post.title,
+           
+            content:this.post.content,
+            imagePath:this.post.imagePath,
+          })
+          console.log(this.post)
         })
+      
+        // this.form.setValue({
+        //   title:this.post.title,
+         
+        //   content:this.post.content,
+        //   image:this.post.imagePath,
+        // })
 
         
       
@@ -71,14 +92,15 @@ export class CreatePostComponent implements OnInit {
     
     const fileInput = event.target as HTMLInputElement;
     const file= fileInput.files ? fileInput.files[0] : null;
-    this.form.patchValue({image:file});
-    this.form.get('image')?.updateValueAndValidity();
+    this.form.patchValue({imagePath:file});
+    this.form.get('imagePath')?.updateValueAndValidity();
    
 
     const reader=new FileReader();
     reader.onload=()=>{
       this.imagePreview=reader.result;
     }
+    console.log(file)
     if(file)
     {
       reader.readAsDataURL(file);
@@ -88,19 +110,31 @@ export class CreatePostComponent implements OnInit {
 
   }
 
+  // onImagePicked(event: Event) {
+  //   const file=(event.target as HTMLInputElement).files[0]
+    // const file = (event?.target? as HTMLInputElement).files[0];
+    // this.form.patchValue({ image: file });
+    // this.form.get("image").updateValueAndValidity();
+    // const reader = new FileReader();
+    // reader.onload = () => {
+    //   this.imagePreview = reader.result as string;
+    // };
+    // reader.readAsDataURL(file);
+  
+
   
 
   onSave(){
     
     if(this.mode==='create')
     {
-      this.postService.addPost(this.form.value.title,this.form.value.content,this.form.value.image);
+      this.postService.addPost(this.form.value.title,this.form.value.content,this.form.value.imagePath);
       this.Loading=true;
       
     }
     else{
       this.postService.updatePost(this.postId,this.form.value.title,this.form.value.content,this.form.value.imagePath)
-      this.Loading=true;
+      //this.Loading=true;
       
     }
     
