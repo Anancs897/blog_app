@@ -50,9 +50,11 @@ export class AuthService {
   createUser(email: string, password: string) {
     const authData: AuthData = { email: email, password: password };
     this.http.post('http://localhost:3000/user/signup', authData)
-      .subscribe(response => {
-        console.log(response);
+      .subscribe(() => {
+        //console.log(response);
         this.router.navigate(['/login'])
+      }, error=>{
+        this.authStatusListenener.next(false);
       })
   }
   
@@ -86,6 +88,8 @@ export class AuthService {
 
         //console.log(response);
 
+      }, error=>{
+        this.authStatusListenener.next(false);
       })
   }
 

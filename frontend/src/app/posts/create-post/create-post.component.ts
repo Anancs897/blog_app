@@ -52,7 +52,7 @@ export class CreatePostComponent implements OnInit {
         this.postService.getPost(this.postId).subscribe(postData=>{
           console.log(postData);
           
-          //this.Loading=false
+          //this.Loading=false  
           this.post={
             id:postData._id,
             title:postData.title,
@@ -66,6 +66,25 @@ export class CreatePostComponent implements OnInit {
             content:this.post.content,
             imagePath:this.post.imagePath,
           })
+          this.imagePreview = this.post.imagePath;
+
+          
+          
+          
+
+    //       const reader=new FileReader();
+    // reader.onload=()=>{
+    //   this.imagePreview=reader.result;
+    // }
+   // console.log(file)
+    // if(file)
+    // {
+    //   reader.readAsDataURL(file);
+    //   console.log(file)
+    // }
+
+
+
           console.log(this.post)
         })
       
@@ -99,12 +118,13 @@ export class CreatePostComponent implements OnInit {
     const reader=new FileReader();
     reader.onload=()=>{
       this.imagePreview=reader.result;
+      console.log(this.imagePreview)
     }
-    console.log(file)
+   // console.log(file)
     if(file)
     {
       reader.readAsDataURL(file);
-      console.log(file)
+      //console.log(file)
     }
 
 
@@ -233,6 +253,14 @@ export class CreatePostComponent implements OnInit {
   //   }
   //   this.form.reset();
   // }
+
+
+
+
+
+
+
+
 
 
 

@@ -23,6 +23,11 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthInterceptorInterceptor } from './auth/auth-interceptor.interceptor';
+import { CKEditorModule } from 'ckeditor4-angular';
+import { ErrorInterceptor } from './error-interceptor';
+import { CurrentPostComponent } from './posts/current-post/current-post.component';
+import { TextEditorComponent } from './text-editor/text-editor.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
   declarations: [
@@ -31,7 +36,9 @@ import { AuthInterceptorInterceptor } from './auth/auth-interceptor.interceptor'
     CreatePostComponent,
     ListPostComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    CurrentPostComponent,
+    TextEditorComponent
   ],
   imports: [
     BrowserModule,
@@ -47,9 +54,14 @@ import { AuthInterceptorInterceptor } from './auth/auth-interceptor.interceptor'
     HttpClientModule,
     MatProgressSpinnerModule,
     ReactiveFormsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    CKEditorModule,
+    AngularEditorModule
   ],
-  providers: [{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptorInterceptor,multi:true}],
+  providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptorInterceptor,multi:true},
+    {provide:HTTP_INTERCEPTORS,useClass:ErrorInterceptor,multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

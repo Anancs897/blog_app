@@ -1,4 +1,4 @@
-<mat-spinner *ngIf="loading"></mat-spinner>
+<!-- <mat-spinner *ngIf="loading"></mat-spinner>
 <p id="expand" *ngIf="!loading">
     <mat-accordion *ngFor="let post of posts">
         <mat-expansion-panel>
@@ -23,7 +23,69 @@
         </mat-expansion-panel>
     </mat-accordion>
 </p>
+ -->
+
+<!-- card -->
+<mat-spinner *ngIf="loading"></mat-spinner>
+<div class="mycontainer" *ngIf="!loading" >
+<div class="outermost-cont">
+    <div class="outer-cont" *ngFor="let post of posts">
+        <div class="card">
+            <h2 class="card-title">{{post.title}}</h2>
+            <p id="img-cont"><img [src]="post.imagePath" [alt]="post.title" id="my-img"></p>
+            <div class="card-body">
+                <h3 class="card-text"> {{ (post.content.length>200)? (post.content | slice:0:200)+'...':(post.content) }} </h3>
+
+                
+            
+                <button type="button" class="btn btn-primary" (click)="openCurrentPost(post.id)" id="view-post-btn">View
+                    post</button>
+                
+            </div>
+        </div>
+
+        <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                
+                        <div class="mypost">
+                            <h5 class="post-title">{{post.title}}</h5>
+                            <p id="post-img-cont"><img [src]="post.imagePath" [alt]="post.title" id="my-post-img"></p>
+                            <div class="post-body">
+                                <p class="post-text"> {{post.content}} </p>
+                            </div>
+                        </div>
+
+
+
+
+
+                    <div class="modal-footer" *ngIf="userIsAuthenticated  && userId == post.creator">
+                        <a mat-button color="primary" [routerLink]="['/edit',post.id]" data-bs-dismiss="modal" >Edit</a>
+                        <button mat-button color="warn" (click)="onDelete(post.id)"
+                            data-bs-dismiss="modal">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+
+
+
+
+
+
+<!-- card -->
 
 <mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions"
     (page)="onChangedPage($event)" aria-label="Select page">
 </mat-paginator>
+

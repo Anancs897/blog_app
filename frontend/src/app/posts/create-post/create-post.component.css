@@ -38,6 +38,7 @@ input[type="file"]{
 .image-preview{
     height: 5 rem;
     margin: 1 rem 0;
+    text-align: center;
 }
 .image-preview img{
     /* height: 171px;
@@ -47,7 +48,22 @@ input[type="file"]{
     width: 30%;
     margin: 2rem 0 2rem 0;
 }
+#preview-btn{
+    position: relative;
+    top: 10px;
+}
+#img-picker{
+    position: absolute;
+    bottom: 19px;
+    left: 5px;
+}
 
+
+
+
+
+
+  
 /* form{
      border: 1px solid black; 
 

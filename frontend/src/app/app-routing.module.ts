@@ -5,6 +5,7 @@ import { ListPostComponent } from './posts/list-post/list-post.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthGuard } from './auth/auth.guard';
+import { CurrentPostComponent } from './posts/current-post/current-post.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path:'create',component:CreatePostComponent, canActivate:[AuthGuard]  },
   {path:'edit/:postId',component:CreatePostComponent ,  canActivate:[AuthGuard]},
   {path:'login',component:LoginComponent},
-  {path:'signup',component:SignupComponent}
+  {path:'signup',component:SignupComponent},
+  {path:'singlePost/:id',component:CurrentPostComponent}
 ];
 
 @NgModule({

@@ -168,5 +168,16 @@ export class PostsServiceService {
     }>("http://localhost:3000/posts/" + id)
   }
 
+  currentId:any;
+  getCurrentPostId(id:any){
+    this.currentId=id;
+    this.router.navigate(['/singlePost/'+id])
+  }
+
+  getSinglePostId(){
+    return this.currentId;
+  }
+  
+
 
 }

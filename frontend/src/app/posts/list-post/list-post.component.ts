@@ -60,8 +60,8 @@ export class ListPostComponent implements OnDestroy,OnInit{
   posts: Post[] = [];
   private postsSub: Subscription = new Subscription;
   totalPosts=0;
-  postsPerPage=1;
-  pageSizeOptions=[5,10];
+  postsPerPage=10;
+  pageSizeOptions=[2,5,10];
   currentPage=1;
   loading=false;
   userId:any
@@ -73,6 +73,7 @@ export class ListPostComponent implements OnDestroy,OnInit{
   
 
   ngOnInit() {
+    console.log(this.posts)
     this.loading=true
     this.postService.getPosts(this.postsPerPage,1);
     this.userId=this.authService.getUserId();
@@ -104,6 +105,10 @@ export class ListPostComponent implements OnDestroy,OnInit{
     this.postService.deletePost(postId).subscribe(()=>{
       this.postService.getPosts(this.postsPerPage,this.currentPage);
     })
+  }
+
+  openCurrentPost(id:any){
+    this.postService.getCurrentPostId(id);
   }
 
   ngOnDestroy() {
