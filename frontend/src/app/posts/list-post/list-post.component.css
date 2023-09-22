@@ -20,6 +20,10 @@
     mat-paginator{
       margin-top: 20px;
       margin-bottom: 30px;
+      margin:auto;
+      /* border: 1px solid black; */
+      text-align: center;
+      
     }
 
     mat-spinner{
@@ -86,6 +90,13 @@
       margin: 5px 15px 10px;
     } */
 
+    #pagination-cont{
+      text-align:center;
+      /* border: 1px solid brown; */
+      width: 50%;
+      margin: auto;
+    }
+
   
   
     @media only screen and (max-width: 1270px) {
@@ -117,113 +128,27 @@
         margin:auto;
         width: 26rem;
         padding: 5px 15px 5px 15px;
+        margin-top: 10px;
+        margin-bottom: 10px;
       }
     }
-   
 
-    @media only screen and (max-width: 895px) {
+    @media (max-width:880px){
       .outermost-cont{
-        display: grid;
         grid-template-columns: 1fr;
+        justify-content: space-evenly;
         
-        align-items: center;
       }
       .card{
-        /* margin:5px 0 0 5px; */
         width: 90%;
-        padding: 5px 15px 5px 15px;
-        /* border: 1px solid red; */
         margin: auto;
-        
-      }
-      .outer-cont{
-        /* border: 1px solid black; */
-        margin: 5px;
-      }
-      .mycontainer{
-        /* border: 1px solid blue; */
-        margin: 10px;
-      }
-
-
-
-      
-    }
-
-
-    @media only screen and (max-width: 380px) {
-      .outermost-cont{
-        display: grid;
-        grid-template-columns: 1fr;
-        
-        /* align-items: center; */
-      }
-      
-      .outer-cont{
-        /* border: 1px solid black; */
-        margin: 5px;
-      }
-      .mycontainer{
-        /* border: 1px solid blue; */
-        margin: 10px;
-      }
-
-      #my-img{
-        width: 90%;
-        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-      
-      }
-
-      .card{
-        /* margin:5px 0 0 5px; */
-        width: 75%;
         padding: 5px;
-        /* border: 1px solid red; */
-        margin: auto;
-        
+        margin-top: 10px;
+        margin-bottom: 10px;
       }
-
-
-
-      
     }
 
 
-    @media only screen and (max-width: 320px) {
-      .outermost-cont{
-        display: grid;
-        grid-template-columns: 1fr;
-        
-        /* align-items: center; */
-      }
-      
-      .outer-cont{
-        /* border: 1px solid black; */
-        margin: 2px;
-      }
-      .mycontainer{
-        /* border: 1px solid blue; */
-        margin: 5px;
-      }
-
-      #my-img{
-        width: 85%;
-        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-      
-      }
-
-      .card{
-        /* margin:5px 0 0 5px; */
-        width: 70%;
-        padding: 5px;
-        /* border: 1px solid red; */
-        margin: auto;
-        
-      }
-
-
-
-      
-    }
     
+   
     

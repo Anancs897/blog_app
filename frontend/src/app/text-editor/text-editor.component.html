@@ -3,4 +3,9 @@
 
 <i class="fa-solid fa-gears"></i>
 
-<!-- <angular-editor formControlName="htmlContent" [config]="editorConfig"></angular-editor> -->
+
+<!-- formControlName="htmlContent" -->
+
+<form [formGroup]="form"      >
+    <angular-editor  [config]="editorConfig"></angular-editor>
+</form>

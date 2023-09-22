@@ -20,9 +20,16 @@
     
 
 
-    <mat-form-field>
-        <textarea   matInput color="primary" formControlName="content" rows="0"></textarea>
-    </mat-form-field>
+    <!-- <mat-form-field>
+        <textarea   matInput color="primary" formControlName="content" rows="5"></textarea>
+    </mat-form-field> -->
+
+    <form [formGroup]="form"      >
+        <angular-editor  [config]="editorConfig"   formControlName="content"  ></angular-editor>
+    </form>
+
+
+
     <button mat-raised-button color="primary" type="submit"  id="save-btn">Save</button>
 </form>
 </mat-card>

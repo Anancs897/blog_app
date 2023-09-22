@@ -3,7 +3,8 @@ import { Component,OnInit} from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { PostsServiceService } from 'src/app/services/posts-service.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-
+import { AngularEditorConfig } from '@kolkov/angular-editor';
+declare var require: any;
 
 
 
@@ -22,6 +23,7 @@ export class CreatePostComponent implements OnInit {
   
   form!: FormGroup;
   imagePreview:any
+  
 
 
   constructor(public postService:PostsServiceService, public route:ActivatedRoute ){}
@@ -39,6 +41,8 @@ export class CreatePostComponent implements OnInit {
         validators:[Validators.required]
       })
     })
+
+    
 
     this.route.paramMap.subscribe((paramMap:ParamMap)=>{
       if(paramMap.has('postId'))
@@ -140,6 +144,55 @@ export class CreatePostComponent implements OnInit {
     //   this.imagePreview = reader.result as string;
     // };
     // reader.readAsDataURL(file);
+
+
+    
+  editorConfig: AngularEditorConfig = {
+    editable: true,
+      spellcheck: true,
+      height: 'auto',
+      minHeight: '0',
+      maxHeight: 'auto',
+      width: 'auto',
+      minWidth: '0',
+      translate: 'yes',
+      enableToolbar: true,
+      showToolbar: true,
+      placeholder: 'Enter text here...',
+      defaultParagraphSeparator: '',
+      defaultFontName: '',
+      defaultFontSize: '',
+      fonts: [
+        {class: 'arial', name: 'Arial'},
+        {class: 'times-new-roman', name: 'Times New Roman'},
+        {class: 'calibri', name: 'Calibri'},
+        {class: 'comic-sans-ms', name: 'Comic Sans MS'}
+      ],
+      customClasses: [
+      {
+        name: 'quote',
+        class: 'quote',
+      },
+      {
+        name: 'redText',
+        class: 'redText'
+      },
+      {
+        name: 'titleText',
+        class: 'titleText',
+        tag: 'h1',
+      },
+    ],
+    // uploadUrl: 'v1/image',
+    
+    sanitize: true,
+    toolbarPosition: 'top',
+    // toolbarHiddenButtons: [
+    //   ['bold', 'italic'],
+    //   ['fontSize']
+    // ]
+};
+
   
 
   
@@ -148,6 +201,14 @@ export class CreatePostComponent implements OnInit {
     
     if(this.mode==='create')
     {
+      // var tempDivElement = document.createElement("div");
+      // console.log(this.form.value.content);
+      // tempDivElement.innerHTML=this.form.value.content;
+      // const formattedText= tempDivElement.innerText;
+      // console.log(formattedText)
+      // const htmlToFormattedText = require("html-to-formatted-text");
+      // const formattedText=htmlToFormattedText(this.form.value.content)
+      // console.log(formattedText)
       this.postService.addPost(this.form.value.title,this.form.value.content,this.form.value.imagePath);
       this.Loading=true;
       
@@ -160,6 +221,13 @@ export class CreatePostComponent implements OnInit {
     
     this.form.reset();
   }
+
+
+
+
+
+
+
 }
 
 

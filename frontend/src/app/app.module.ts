@@ -28,6 +28,8 @@ import { ErrorInterceptor } from './error-interceptor';
 import { CurrentPostComponent } from './posts/current-post/current-post.component';
 import { TextEditorComponent } from './text-editor/text-editor.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { FilterPipe } from './pipes/filter.pipe';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     LoginComponent,
     SignupComponent,
     CurrentPostComponent,
-    TextEditorComponent
+    TextEditorComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     ReactiveFormsModule,
     MatPaginatorModule,
     CKEditorModule,
-    AngularEditorModule
+    AngularEditorModule,
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptorInterceptor,multi:true},

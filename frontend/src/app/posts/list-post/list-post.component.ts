@@ -64,10 +64,12 @@ export class ListPostComponent implements OnDestroy,OnInit{
   pageSizeOptions=[2,5,10];
   currentPage=1;
   loading=false;
-  userId:any
+  userId:any;
+  formattedText:any;
 
   private authStatusSub:Subscription=new Subscription;
   userIsAuthenticated=false;
+  searchKey:any=""
   
   constructor(public postService:PostsServiceService,public http:HttpClient,private authService:AuthService){}
   
@@ -87,6 +89,9 @@ export class ListPostComponent implements OnDestroy,OnInit{
       this.authStatusSub=this.authService.getAuthStatusListener().subscribe(isAuthenticated=>{
         this.userIsAuthenticated=isAuthenticated  
         this.userId=this.authService.getUserId();
+      })
+      this.postService.search.subscribe((val)=>{
+        this.searchKey=val;
       })
   }
 

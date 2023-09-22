@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Post } from '../posts/post.model';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
 export class PostsServiceService {
 
   constructor(private http:HttpClient,private router:Router) { }
+
+
+   search:BehaviorSubject<any>=new BehaviorSubject<any>("");
 
 
 
